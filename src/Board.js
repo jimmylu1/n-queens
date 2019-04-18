@@ -210,13 +210,13 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       
-      //up right half
-      for (let col = 0; col < this.get('n'); col++) {
-        if (this.hasMajorDiagonalConflictAt(col)) {
+      //majorDiagonalconflict = (-n+1) until (n-1))
+      for (let colIdx = -(this.get('n')) + 1 ; colIdx < this.get('n'); colIdx++) {
+        if (this.hasMajorDiagonalConflictAt(colIdx)) {
           return true;
         }
       }
-          
+      /*    
       var i = 0;
       var row = this.get('n') - 1;
       var col = this.get('n') - 1;
@@ -238,6 +238,7 @@
           row--;
         }
       }
+      */
       return false;
     },
 
