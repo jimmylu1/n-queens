@@ -163,15 +163,15 @@
       
       if (colIdx >= 0) {
       
-      while (colIdx < this.get('n')) {
-        counter += this.get(rowIdx)[colIdx];
+        while (colIdx < this.get('n')) {
+          counter += this.get(rowIdx)[colIdx];
 
-        if (counter > 1 ) {
-          return true;
-        }
+          if (counter > 1 ) {
+            return true;
+          }
         
-        colIdx++;
-        rowIdx++;
+          colIdx++;
+          rowIdx++;
         
         }
       }
@@ -211,7 +211,7 @@
     hasAnyMajorDiagonalConflicts: function() {
       
       //majorDiagonalconflict = (-n+1) until (n-1))
-      for (let colIdx = -(this.get('n')) + 1 ; colIdx < this.get('n'); colIdx++) {
+      for (let colIdx = -(this.get('n')) + 1; colIdx < this.get('n'); colIdx++) {
         if (this.hasMajorDiagonalConflictAt(colIdx)) {
           return true;
         }
