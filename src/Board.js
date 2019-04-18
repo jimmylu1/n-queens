@@ -161,6 +161,8 @@
       var colIdx = majorDiagonalColumnIndexAtFirstRow;
       var rowIdx = 0;
       
+      if (colIdx >= 0) {
+      
       while (colIdx < this.get('n')) {
         counter += this.get(rowIdx)[colIdx];
 
@@ -171,7 +173,32 @@
         colIdx++;
         rowIdx++;
         
+        }
       }
+      
+      
+      
+      if (colIdx < 0) {
+        rowIdx = Math.abs(majorDiagonalColumnIndexAtFirstRow);
+        colIdx = 0;
+        
+        
+        while (rowIdx < this.get('n')) {
+          counter += this.get(rowIdx)[colIdx];
+          
+          if (counter > 1 ) {
+            return true;
+          }
+          
+          colIdx++;
+          rowIdx++;
+        }
+        
+        
+        
+        
+      }
+    
  
  
       return false;
