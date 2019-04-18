@@ -62,7 +62,7 @@
     },
 
 
-  /*
+    /*
          _             _     _
      ___| |_ __ _ _ __| |_  | |__   ___ _ __ ___ _
     / __| __/ _` | '__| __| | '_ \ / _ \ '__/ _ (_)
@@ -191,10 +191,10 @@
       }
           
       var i = 0;
-      var row = this.get('n')- 1;
-      var col = this.get('n')- 1;
+      var row = this.get('n') - 1;
+      var col = this.get('n') - 1;
       var counter = 0;
-      while ( i < (this.get('n')- 1)) {
+      while ( i < (this.get('n') - 1)) {
         
         counter += this.get(row)[col];
         
@@ -203,8 +203,8 @@
         }
         if (col === 0) {
           i++;
-          col = this.get('n')- 1 - i;
-          row = this.get('n')- 1;
+          col = this.get('n') - 1 - i;
+          row = this.get('n') - 1;
           counter = 0;
         } else {
           col--;
