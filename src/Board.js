@@ -250,6 +250,29 @@
         }
       }
       
+      var i = 0;
+      var row = this.get('n') - 1;
+      var col = 0;
+      var counter = 0;
+      while ( i < (this.get('n') - 1)) {
+        
+        counter += this.get(row)[col];
+        
+        if (counter > 1 ) {
+          return true;
+        }
+        if (col === this.get('n') - 1) {
+          i++;
+          col = i;
+          row = this.get('n') - 1;
+          counter = 0;
+        } else {
+          col++;
+          row--;
+        }
+      }
+      
+      
       return false; // fixme
     }
 
