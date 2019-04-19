@@ -177,7 +177,6 @@
       }
       
       
-      
       if (colIdx < 0) {
         rowIdx = Math.abs(majorDiagonalColumnIndexAtFirstRow);
         colIdx = 0;
@@ -192,17 +191,11 @@
           
           colIdx++;
           rowIdx++;
-        }
-        
-        
-        
+        }   
         
       }
     
- 
- 
       return false;
-
       
     },
  
@@ -216,29 +209,7 @@
           return true;
         }
       }
-      /*    
-      var i = 0;
-      var row = this.get('n') - 1;
-      var col = this.get('n') - 1;
-      var counter = 0;
-      while ( i < (this.get('n') - 1)) {
-        
-        counter += this.get(row)[col];
-        
-        if (counter > 1 ) {
-          return true;
-        }
-        if (col === 0) {
-          i++;
-          col = this.get('n') - 1 - i;
-          row = this.get('n') - 1;
-          counter = 0;
-        } else {
-          col--;
-          row--;
-        }
-      }
-      */
+
       return false;
     },
 
@@ -253,16 +224,33 @@
       var colIdx = minorDiagonalColumnIndexAtFirstRow;
       var rowIdx = 0;
       
-      while (rowIdx < this.get('n')) {
-        counter += this.get(rowIdx)[colIdx];
+      if (minorDiagonalColumnIndexAtFirstRow < (this.get('n') - 1)) {
+        while (rowIdx < this.get('n')) {
+          counter += this.get(rowIdx)[colIdx];
 
-        if (counter > 1 ) {
-          return true;
+          if (counter > 1 ) {
+            return true;
+          }
+          
+          colIdx--;
+          rowIdx++;
+          
         }
-        
-        colIdx--;
-        rowIdx++;
-        
+      }
+      
+      if(minorDiagonalColumnIndexAtFirstRow >= this.get('n')) {
+        colIdx = this.get('n')- 1;
+        rowIdx = minorDiagonalColumnIndexAtFirstRow - (this.get('n')- 1);
+        while(rowIdx < this.get('n')) {
+          counter += this.get(rowIdx)[colIdx];
+          
+          if (counter > 1 ) {
+            return true;
+          }
+          
+          colIdx--;
+          rowIdx++;
+        }
       }
  
 
@@ -272,34 +260,12 @@
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
       
-      for (var i = 0; i < this.get('n'); i ++) {
+      for (var i = 0; i <= (this.get('n') + 1); i ++) {
         if (this.hasMinorDiagonalConflictAt(i)) {
           return true;
         }
       }
-      
-      var i = 0;
-      var row = this.get('n') - 1;
-      var col = 0;
-      var counter = 0;
-      while ( i < (this.get('n') - 1)) {
-        
-        counter += this.get(row)[col];
-        
-        if (counter > 1 ) {
-          return true;
-        }
-        if (col === this.get('n') - 1) {
-          i++;
-          col = i;
-          row = this.get('n') - 1;
-          counter = 0;
-        } else {
-          col++;
-          row--;
-        }
-      }
-      
+ 
       
       return false; // fixme
     }
