@@ -224,7 +224,7 @@
       var colIdx = minorDiagonalColumnIndexAtFirstRow;
       var rowIdx = 0;
       
-      if (minorDiagonalColumnIndexAtFirstRow < (this.get('n') - 1)) {
+      if (minorDiagonalColumnIndexAtFirstRow < (this.get('n'))) {
         while (rowIdx < this.get('n')) {
           counter += this.get(rowIdx)[colIdx];
 

@@ -109,11 +109,6 @@ window.findNQueensSolution = function(n) {
   
   
   
-  
-
-
-  
-  
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
 };
@@ -126,37 +121,37 @@ window.countNQueensSolutions = function(n) {
   
   var currentRow = 0;
   
-  if (n === 0 || n === 1) {
-    return 1;
-  }
+  // if (n === 0 || n === 1) {
+  //   return 1;
+  // }
   
-  if (n === 2 || n === 3) {
-    return 0;
-  }
-  
-  
+  // if (n === 2 || n === 3) {
+  //   return 0;
+  // }
   
 
-  var recursion = function (currentRow, board) {
+  var recursion = function (currentRow, board ) {
     //base case reach end and have viable solution
-    if (currentRow === n) {
+    if (currentRow === n ) {
+      
       solutionCount++;
+      
       return;
           
     }
     
-    //ptut one rook on every first position
+    
     for (var col = 0; col < n; col++) {
       board.togglePiece(currentRow, col);
-          
-      if (board.hasAnyQueensConflicts()) {
-        board.togglePiece(currentRow, col);
-      } else {
-        recursion(currentRow + 1, board);
-        // check next position
-        board.togglePiece(currentRow, col);
-      }
+    
        
+      if (!board.hasAnyQueensConflicts()) {
+        recursion(currentRow + 1, board);
+        
+      }
+
+      board.togglePiece(currentRow, col);
+    
     }
   
     
