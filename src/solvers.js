@@ -17,16 +17,16 @@
 
 window.findNRooksSolution = function(n) {
   
-  let board = new Board({'n':n }); 
+  let board = new Board({'n': n }); 
   
 
-  for (let r = 0 ; r < n ; r++) {
+  for (let r = 0; r < n; r++) {
     
-    for (let c = 0; c < n; c++){
+    for (let c = 0; c < n; c++) {
       
       if (r === c) {
         //togglePiece: function(rowIndex, colIndex)
-        board.togglePiece(r,c);
+        board.togglePiece(r, c);
     
       }
       
@@ -42,7 +42,7 @@ window.countNRooksSolutions = function(n) {
   var solutionCount = 0; 
   
 
-  let board = new Board({'n':n }); 
+  let board = new Board({'n': n }); 
 
   //position = row * n + col;
   //var row = Math.floor(startPosition/n);
@@ -52,7 +52,7 @@ window.countNRooksSolutions = function(n) {
     return 1;
   }
   
-  if (n === 2){
+  if (n === 2) {
     return 2;
   }
   var currentRow = 0;
@@ -60,31 +60,30 @@ window.countNRooksSolutions = function(n) {
   
 
   var recursion = function (currentRow, board) {
-      //base case reach end and have viable solution
-  if (currentRow === n) {
-    solutionCount++;
-    return;
+    //base case reach end and have viable solution
+    if (currentRow === n) {
+      solutionCount++;
+      return;
         
-  }
-  
-  //ptut one rook on every first position
-  for (var col = 0; col < n; col++) {
-    board.togglePiece(currentRow,col);
-        
-    if(board.hasAnyRooksConflicts()) {
-    board.togglePiece(currentRow,col);
-    } else {
-      recursion(currentRow + 1, board);
-      // check next position
-      board.togglePiece(currentRow,col);
-      }
-       
     }
   
-    
-  }
+    //ptut one rook on every first position
+    for (var col = 0; col < n; col++) {
+      board.togglePiece(currentRow, col);
+          
+      if (board.hasAnyRooksConflicts()) {
+        board.togglePiece(currentRow, col);
+      } else {
+        recursion(currentRow + 1, board);
+        // check next position
+        board.togglePiece(currentRow, col);
+      }
+         
+    }
+ 
+  };
   
-  recursion(currentRow,board);
+  recursion(currentRow, board);
 
     
   
@@ -99,7 +98,7 @@ window.findNQueensSolution = function(n) {
     return [];
   }
   
-  if (n === 1){
+  if (n === 1) {
     return [[1]];
   }
   
@@ -123,7 +122,7 @@ window.findNQueensSolution = function(n) {
 window.countNQueensSolutions = function(n) {
   var solutionCount = 0; 
   
-  let board = new Board({'n':n }); 
+  let board = new Board({'n': n }); 
   
   var currentRow = 0;
   
@@ -131,7 +130,7 @@ window.countNQueensSolutions = function(n) {
     return 1;
   }
   
-  if (n === 2 || n === 3){
+  if (n === 2 || n === 3) {
     return 0;
   }
   
@@ -139,31 +138,31 @@ window.countNQueensSolutions = function(n) {
   
 
   var recursion = function (currentRow, board) {
-      //base case reach end and have viable solution
-  if (currentRow === n) {
-    solutionCount++;
-    return;
-        
-  }
-  
-  //ptut one rook on every first position
-  for (var col = 0; col < n; col++) {
-    board.togglePiece(currentRow,col);
-        
-    if(board.hasAnyQueensConflicts()) {
-    board.togglePiece(currentRow,col);
-    } else {
-      recursion(currentRow + 1, board);
-      // check next position
-      board.togglePiece(currentRow,col);
+    //base case reach end and have viable solution
+    if (currentRow === n) {
+      solutionCount++;
+      return;
+          
+    }
+    
+    //ptut one rook on every first position
+    for (var col = 0; col < n; col++) {
+      board.togglePiece(currentRow, col);
+          
+      if (board.hasAnyQueensConflicts()) {
+        board.togglePiece(currentRow, col);
+      } else {
+        recursion(currentRow + 1, board);
+        // check next position
+        board.togglePiece(currentRow, col);
       }
        
     }
   
     
-  }
+  };
   
-  recursion(currentRow,board);
+  recursion(currentRow, board);
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
 };

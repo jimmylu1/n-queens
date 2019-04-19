@@ -238,10 +238,10 @@
         }
       }
       
-      if(minorDiagonalColumnIndexAtFirstRow >= this.get('n')) {
-        colIdx = this.get('n')- 1;
-        rowIdx = minorDiagonalColumnIndexAtFirstRow - (this.get('n')- 1);
-        while(rowIdx < this.get('n')) {
+      if (minorDiagonalColumnIndexAtFirstRow >= this.get('n')) {
+        colIdx = this.get('n') - 1;
+        rowIdx = minorDiagonalColumnIndexAtFirstRow - (this.get('n') - 1);
+        while (rowIdx < this.get('n')) {
           counter += this.get(rowIdx)[colIdx];
           
           if (counter > 1 ) {
